@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+tools:context="xenophobe.applications.com.ideasjotter.Ideas" >
+    <item
+    android:id="@+id/delete"
+    android:title="Delete"/>
+</menu>
+

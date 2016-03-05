@@ -127,7 +127,7 @@ public class Ideas extends Activity {
 
             case R.id.action_credits:
                 AlertDialog.Builder builder = new AlertDialog.Builder(Ideas.this);
-                builder.setMessage("Debodirno Chandra").setTitle("Credits");
+                builder.setMessage("Ideas Jotter\nVersion 1.0\nDebodirno Chandra\n©2016\nAll rights reserved.").setTitle("About");
                 AlertDialog dialog = builder.create();
                 dialog.show();
                 return true;

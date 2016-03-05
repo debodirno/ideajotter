@@ -5,7 +5,7 @@ tools:context="xenophobe.applications.com.ideasjotter.Ideas" >
     android:icon="@drawable/ic_action_new"
     android:title="Add Idea"
     android:showAsAction="always"/>
-    <item android:id="@+id/action_credits"
-    android:title="Credits"
+    <item android:id="@+id/action_about"
+    android:title="About"
     android:showAsAction="never"/>
 </menu>

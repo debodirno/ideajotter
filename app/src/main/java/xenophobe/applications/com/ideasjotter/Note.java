@@ -30,9 +30,11 @@ public class Note extends Activity {
     private Bundle extras;
     private EditText et_note;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Content");
         setContentView(R.layout.note);
         et_note = (EditText) findViewById(R.id.et_note);
         extras = getIntent().getExtras();

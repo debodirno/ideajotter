@@ -2,11 +2,13 @@ package xenophobe.applications.com.ideasjotter;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.SparseBooleanArray;
 import android.view.ActionMode;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,6 +16,7 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AbsListView.MultiChoiceModeListener;
 import com.google.android.gms.appindexing.Action;
@@ -60,7 +63,10 @@ public class Ideas extends Activity {
                 @Override
                 public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
                     final int checkedCount = lv_filenames.getCheckedItemCount();
-                    mode.setTitle(checkedCount + " selected");
+                    if (checkedCount > 1)
+                        mode.setTitle(checkedCount + " items selected");
+                    else
+                        mode.setTitle(checkedCount + " item selected");
                     adapter.toggleSelection(position);
                 }
 
@@ -125,11 +131,30 @@ public class Ideas extends Activity {
                 startActivity(intent);
                 return true;
 
-            case R.id.action_credits:
+            case R.id.action_about:
                 AlertDialog.Builder builder = new AlertDialog.Builder(Ideas.this);
-                builder.setMessage("Ideas Jotter\nVersion 1.0\nDebodirno Chandra\n©2016\nAll rights reserved.").setTitle("About");
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                builder.setTitle("About");
+                builder.setMessage("Debodirno Chandra\n©2016\nAll rights reserved.");
+                builder.setPositiveButton("OK", null);
+                AlertDialog dialog = builder.show();
+
+                TextView messageView = (TextView)dialog.findViewById(android.R.id.message);
+                messageView.setGravity(Gravity.CENTER);
+
+                TextView titleView = (TextView)dialog.findViewById(this.getResources().getIdentifier("alertTitle", "id", "android"));
+                if (titleView != null) {
+                    titleView.setGravity(Gravity.CENTER);
+                }
+                return true;
+
+            case R.id.action_share:
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, "Click on this link to download the app : https://github.com/debodirno/ideas-jotter/blob/master/app-debug.apk?raw=true");
+                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Ideas Jotter - An on-the-fly app to jot down ideas and notes");
+
+                startActivity(Intent.createChooser(sharingIntent, "How do you want to share?"));
                 return true;
 
             default:

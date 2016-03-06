@@ -60,51 +60,51 @@ public class Ideas extends Activity {
         lv_filenames.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
 
         lv_filenames.setMultiChoiceModeListener(new MultiChoiceModeListener() {
-                @Override
-                public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
-                    final int checkedCount = lv_filenames.getCheckedItemCount();
-                    if (checkedCount > 1)
-                        mode.setTitle(checkedCount + " items selected");
-                    else
-                        mode.setTitle(checkedCount + " item selected");
-                    adapter.toggleSelection(position);
-                }
+                                                    @Override
+                                                    public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
+                                                        final int checkedCount = lv_filenames.getCheckedItemCount();
+                                                        if (checkedCount > 1)
+                                                            mode.setTitle(checkedCount + " items selected");
+                                                        else
+                                                            mode.setTitle(checkedCount + " item selected");
+                                                        adapter.toggleSelection(position);
+                                                    }
 
-                @Override
-                public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-                    mode.getMenuInflater().inflate(R.menu.menu_context, menu);
-                    return true;
-                }
+                                                    @Override
+                                                    public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                                                        mode.getMenuInflater().inflate(R.menu.menu_context, menu);
+                                                        return true;
+                                                    }
 
-                @Override
-                public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-                    return false;
-                }
+                                                    @Override
+                                                    public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+                                                        return false;
+                                                    }
 
-                @Override
-                public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-                    switch (item.getItemId()){
-                        case R.id.delete:
-                            SparseBooleanArray selected = adapter.getSelectedIds();
-                            for(int i = (selected.size() - 1); i >= 0; i --){
-                                if(selected.valueAt(i)){
-                                    FileName selectedItem = adapter.getItem(selected.keyAt(i));
-                                    adapter.remove(selectedItem);
-                                    new NoteManager().deleteFile(selectedItem.getName());
-                                }
-                            }
-                            mode.finish();
-                            return true;
-                        default:
-                            return false;
-                    }
-                }
+                                                    @Override
+                                                    public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                                                        switch (item.getItemId()){
+                                                            case R.id.delete:
+                                                                SparseBooleanArray selected = adapter.getSelectedIds();
+                                                                for(int i = (selected.size() - 1); i >= 0; i --){
+                                                                    if(selected.valueAt(i)){
+                                                                        FileName selectedItem = adapter.getItem(selected.keyAt(i));
+                                                                        adapter.remove(selectedItem);
+                                                                        new NoteManager().deleteFile(selectedItem.getName());
+                                                                    }
+                                                                }
+                                                                mode.finish();
+                                                                return true;
+                                                            default:
+                                                                return false;
+                                                        }
+                                                    }
 
-                @Override
-                public void onDestroyActionMode(ActionMode mode) {
-                    adapter.removeSelection();
-                }
-            }
+                                                    @Override
+                                                    public void onDestroyActionMode(ActionMode mode) {
+                                                        adapter.removeSelection();
+                                                    }
+                                                }
         );
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.

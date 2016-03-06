@@ -135,7 +135,6 @@ public class Ideas extends Activity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(Ideas.this);
                 builder.setTitle("About");
                 builder.setMessage("Debodirno Chandra\n©2016\nAll rights reserved.");
-                builder.setPositiveButton("OK", null);
                 AlertDialog dialog = builder.show();
 
                 TextView messageView = (TextView)dialog.findViewById(android.R.id.message);

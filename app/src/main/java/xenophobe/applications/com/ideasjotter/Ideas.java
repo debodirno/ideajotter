@@ -151,7 +151,7 @@ public class Ideas extends Activity {
                 Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
 
-                sharingIntent.putExtra(Intent.EXTRA_TEXT, "Click on this link to download the app : https://github.com/debodirno/ideas-jotter/blob/master/app-debug.apk?raw=true");
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, "Click on this link to download the app : https://raw.githubusercontent.com/debodirno/ideas-jotter/master/app-debug.apk");
                 sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Ideas Jotter - An on-the-fly app to jot down ideas and notes");
 
                 startActivity(Intent.createChooser(sharingIntent, "How do you want to share?"));

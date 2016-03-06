@@ -1,5 +1,5 @@
 # Ideas Jotter
-A simple, quick and comfortable notepad-cum-idea-jotter to be used on the fly. Ad-free and comes with a sleek material design, this is the notes app you are looking for.
+A simple, quick and efficient Android application for notepad-cum-idea-jottings to be used on the fly. Light and comes with a clean material UI, this is the notes app you are looking for.
 
 ##New features to be added in the coming versions:
 - Notes :

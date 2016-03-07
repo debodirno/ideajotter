@@ -134,7 +134,7 @@ public class Ideas extends Activity {
             case R.id.action_about:
                 AlertDialog.Builder builder = new AlertDialog.Builder(Ideas.this);
                 builder.setTitle("About");
-                builder.setMessage("Debodirno Chandra\n©2016\nAll rights reserved.");
+                builder.setMessage("Debodirno Chandra\n©2016\nMIT License");
                 AlertDialog dialog = builder.show();
 
                 TextView messageView = (TextView)dialog.findViewById(android.R.id.message);
